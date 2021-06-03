@@ -12,7 +12,12 @@ import { Drawer as MUIDrawer,
     Toolbar,
     IconButton,
     Divider,
-    Button
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle
 } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,7 +25,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 import { RouteComponentProps, withRouter, Switch, Route } from 'react-router-dom';
-import { DataTable } from '../../components'
+import { DataTable, ShipForm } from '../../components' // Added Ship form in after creating new component
 
 const drawerWidth = 240;
 
@@ -103,6 +108,8 @@ export const Dashboard = withRouter((props:DashProps) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -111,6 +118,14 @@ export const Dashboard = withRouter((props:DashProps) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleDialogClickOpen = () => {
+        setDialogOpen(true);
+    };
+
+    const handleDialogClickClose = () => {
+        setDialogOpen(false);
+    }
 
     const itemsList = [
         {
@@ -136,7 +151,19 @@ export const Dashboard = withRouter((props:DashProps) => {
                      className={clsx(classes.menuButton, open && classes.hide)}>
                          <MenuIcon />
                     </IconButton>
-                    <Button className={classes.toolbar_button}>Create New Ship</Button>
+                    <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>Create New Ship</Button>
+                    {/* Beginning of Dialog Popup */}
+                    <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby='form-dialog-title'>
+                        <DialogTitle id='form-dialog-title'>Add New Ship</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>Add a New Ship</DialogContentText>
+                            <ShipForm />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick= {handleDialogClickClose} color='primary'>Cancel</Button>
+                            <Button onClick ={handleDialogClickClose} color='primary'>Done</Button>
+                        </DialogActions>
+                    </Dialog>
                 </Toolbar>
                 </AppBar>
                 <MUIDrawer

@@ -19,7 +19,8 @@ const useStyles = makeStyles({
     navbar_container: {
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'black',
     },
     logo: {
         margin: '0 0 0 0.45em'
@@ -30,7 +31,8 @@ const useStyles = makeStyles({
     logo_navigation: {
         listStyle: 'none',
         textTransform: 'uppercase',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: 'yellow'
     },
     navigation: {
         display: 'flex'
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
     nav_a: {
         display: 'block',
         padding: '1em',
-        color: 'black'
+        color: 'yellow'
     },
     main: {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ship_image});`,
@@ -50,12 +52,14 @@ const useStyles = makeStyles({
         position: 'absolute'
     },
     main_text: {
+        fontFamily: "Brush Script MT, Brush Script Std, cursive",
         textAlign: 'center',
         position: 'relative',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        color: 'white'
+        color: 'Yellow',
+        fontSize: '30px'
     }
 
 });
@@ -88,9 +92,9 @@ export const Home = ( props:Props ) => {
             <main className={classes.main}>
                 <div className={classes.main_text}>
                     <h1>{ props.title }</h1>
-                    <p>I Like Ships!</p>
+                    <br/>
                     <Link to='/dashboard'>
-                        <Button color='primary' variant="contained">Click Me</Button>
+                        <Button color='primary' variant="contained">Explore Ships</Button>
                     </Link>
                     
                 </div>
