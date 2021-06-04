@@ -1,6 +1,6 @@
 import React from 'react';
 
-let token = 'a01983302b4b19e1a6a5f0596057666f63f8cb3d798103ee';
+let token = '8f4276d456de3d2edcc9992dd16724f1f21f862d85ff8e00';
 
 export const server_calls = {
     get: async () => {

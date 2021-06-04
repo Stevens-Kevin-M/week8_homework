@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ship_image from '../../assets/images/wp1982908.jpeg';
 import { Link } from 'react-router-dom';
+import {AuthCheck} from 'reactfire';
 
 
 interface Props{
@@ -80,12 +81,20 @@ export const Home = ( props:Props ) => {
                         <li>
                             <Link to="/" className={classes.nav_a}>Home</Link>
                         </li>
+                        {/* START OF NEW ADDITION */}
+                        <AuthCheck fallback={
                         <li>
-                            <Link to="/dashboard" className={classes.nav_a}>About</Link>
+                        <Link to="/signin" className={classes.nav_a}>Sign In</Link>
+                        </li>
+                        }>
+                        <li>
+                        <Link to="/dashboard" className={classes.nav_a}>Dashboard</Link>
                         </li>
                         <li>
-                            <Link to="/signin" className={classes.nav_a}>Learn More</Link>
+                            <Link to="/signin" className={classes.nav_a}>Sign Out</Link>
                         </li>
+                        </AuthCheck>
+										{/* END OF NEW ADDITION */}
                     </ul>
                 </div>
             </nav>
